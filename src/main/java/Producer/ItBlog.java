@@ -16,7 +16,7 @@ import java.util.concurrent.TimeoutException;
 
 public class ItBlog {
     private static final String EXCHANGE_NAME = "direct_message";
-    static Logger logger = LoggerFactory.getLogger(Subscriber.class);
+    static Logger logger = LoggerFactory.getLogger(ItBlog.class);
 
     public static void main(String[] args) {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
