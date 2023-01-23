@@ -25,9 +25,7 @@ public class Subscriber {
 
         String queueName = channel.queueDeclare().getQueue();
         logger.info("QUEUE NAME: " + queueName);
-        subscribe(queueName, channel);
-        channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.TOPIC);
-
+        callBackListener(queueName, channel);
         while (true) {
             try {
                 System.out.println("-Введите тему на которую хотите подписаться в формате" +
@@ -56,7 +54,7 @@ public class Subscriber {
         }
     }
 
-    public static void subscribe(String queueName, Channel channel) throws IOException {
+    public static void callBackListener(String queueName, Channel channel) throws IOException {
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
             String message = new String(delivery.getBody(), "UTF-8");
             logger.info("[x] Received " + delivery.getEnvelope().getRoutingKey() + "':'" + message + "'");
